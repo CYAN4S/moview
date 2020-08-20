@@ -1,47 +1,25 @@
 import React from 'react';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(`CONSTRUCTED`);
-  }
+  state = {
+    isLoading: true,
+    movies: [],
+  };
 
   componentDidMount() {
-    console.log(`RENDER COMPLETE`);
+    // Load movie data.
+
+    setTimeout(() => {
+      this.setState({isLoading: false});
+    }, 6000);
   }
-
-  componentDidUpdate() {
-    console.log(`UPDATED`);
-  }
-
-  componentWillUnmount() {
-    console.log(`I'LL BE BACK`);
-  }
-
-  state = {
-    count: 0
-  };
-
-  add = () => {
-    this.setState(current => ({
-      count: current.count + 1
-    }));
-  };
-
-  
-  minus = () => {
-    this.setState(current => ({
-      count: current.count - 1
-    }));
-  };
 
   render() {
-    console.log(`RENDERING`);
+    const { isLoading } = this.state;
+
     return (
       <div>
-        <h1>NUMBER: {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
+        {isLoading ? `Loading...` : `We are ready`}
       </div>
     );
   }
