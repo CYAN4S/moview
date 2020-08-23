@@ -15,7 +15,7 @@ class Home extends React.Component {
         data: { movies },
       },
     } = await axios.get(
-      `https://yts-proxy.now.sh/list_movies.json?sort_by=rating`
+      `https://yts-proxy.now.sh/list_movies.json?sort_by=rating&limit=10`
     );
     this.setState({ movies, isLoading: false });
   };
@@ -35,7 +35,9 @@ class Home extends React.Component {
             <span className="loader__text">Loading...</span>
           </div>
         ) : (
-          <div className="movies">
+          <div>
+            <h2>Top Ratings 10</h2>
+            <div className="movies">
             {movies.map((movie) => (
               <Movie
                 key={movie.id}
@@ -48,6 +50,8 @@ class Home extends React.Component {
               />
             ))}
           </div>
+          </div>
+          
         )}
       </section>
     );

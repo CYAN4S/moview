@@ -21,7 +21,7 @@ function Movie({ title, year, summary, poster, genres }) {
             {genres.map((genre, index) => {
               return (
                 <li key={index} className="movie__genre">
-                  {genre}
+                  #{genre}
                 </li>
               );
             })}
